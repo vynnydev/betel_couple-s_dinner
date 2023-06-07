@@ -1,7 +1,30 @@
 {
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vynnydev/betel_couple-s_dinner-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vynnydev/betel_couple-s_dinner-server/issues"
+  },
+  "homepage": "https://github.com/vynnydev/betel_couple-s_dinner-server#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongodb": "^5.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

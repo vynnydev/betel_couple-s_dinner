@@ -1,4 +1,4 @@
-const { ObjectId } = require("mongodb")
+import { ObjectId } from "mongodb"
 const dbName = "betel_dinners"
 const coll = "couples"
 let db

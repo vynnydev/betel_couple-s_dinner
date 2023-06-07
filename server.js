@@ -1,8 +1,9 @@
-const express = require("express")
-const cors = require("cors")
-const database = require('./database')
-const dbFunctions = require('./dbFunctions')
-const { ObjectId } = require("mongodb")
+import express from "express"
+import cors from "cors"
+import database from './database'
+import dbFunctions from './dbFunctions'
+import { ObjectId } from "mongodb"
+
 const port = 3000
 
 const app = express()
