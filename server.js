@@ -1,8 +1,9 @@
-import express from "express"
-import cors from "cors"
-import database from './database'
-import dbFunctions from './dbFunctions'
+import express from 'express'
+import cors from 'cors'
+import { connectDatabase } from './database.js'
 import { ObjectId } from "mongodb"
+
+import databaseRepository from './database-repository.js'
 
 const port = 3000
 
@@ -15,7 +16,7 @@ app.use(express.json())
 
 app.get("/api/couples", async (req, res) => {
 	try {
-		const docs = await dbFunctions.getAllDocs()
+		const docs = await databaseRepository.getAllDocs()
 		res.json(docs) 
 	}
 	catch (err) {
@@ -29,7 +30,7 @@ app.post('/api/addcouple', async (req, res) => {
 	let data = req.body;
 
 	try {
-		data = await dbFunctions.addDoc(data)
+		data = await databaseRepository.addDoc(data)
 		res.json(data)
 	}
 	catch (err) {
@@ -45,7 +46,7 @@ app.delete("/api/deletecouple/:id", async (req, res) => {
 	
 	if (id && ObjectId.isValid(id)) {
 		try {
-			respObj = await dbFunctions.deleteDoc(id)
+			respObj = await databaseRepository.deleteDoc(id)
 		}
 		catch (err) {
 			console.error("# Delete Error", err)
@@ -67,8 +68,9 @@ let conn
 
 (async () => {
 	try {
-		conn = await database()
-		await dbFunctions.getDb(conn)
+		conn = await connectDatabase
+		()
+		await databaseRepository.getDb(conn)
 		server = app.listen(port, () => {
 			console.log("# App server listening on port " + port)
 		})

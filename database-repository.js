@@ -3,8 +3,7 @@ const dbName = "betel_dinners"
 const coll = "couples"
 let db
 
-module.exports = {
-
+const databaseRepository = {
 	getDb: async (client) => {
 		db = await client.db(dbName)
 	},
@@ -22,3 +21,5 @@ module.exports = {
 		return await db.collection(coll).deleteOne(filter)
 	}
 }
+
+export default databaseRepository
